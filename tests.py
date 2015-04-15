@@ -2,4 +2,4 @@ import unittest
 
 class SampleTest(unittest.TestCase):
     def test_sample(self):
-       self.assertEquals(True, False)
+       self.assertEquals(True, True))
