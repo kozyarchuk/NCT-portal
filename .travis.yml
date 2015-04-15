@@ -7,9 +7,9 @@ install:
 script: nosetests
 deploy:
   provider: elasticbeanstalk
-  access_key_id: AKIAIIKFAWTCW3TC7OPA
+  access_key_id: AKIAJ4N4ARHGLW4KN7HQ
   secret_access_key:
-    secure: srXZUD7uqR90zAdprwnnTKxHDNQU6iEJif9tMyccZe0yOVDbm/4EuoedoJ6vvaNuzK3IkYFRt6ivJ9w6d5jKFhGkPZ60N9UVRK6dM/jDTe/+55HHCJc3S9gRPFQ4g3I4skIcot175pcHIMj+MLMTWi0t/z8+XZjCVomQMsmxX8c=
+    secure: mVB5336Q+9fQ1IY8fVBiP4EX6SuC1gOiRRSkh5eA/3KQVVuguzwL4pBiXZESyUJVqYxlATG2Xrpk3Cl1bRgLFZS14xXyPNAMvoQ5sJ6EaHOEbuFibPeouLEJokVrLYaACYruybCbBPbtgj49n0ZTBqiLOah3WX8MxwtURXpJ8Fc=
   region: us-east-1
   app: NCT-portal
   env: NCT-portal-dev
