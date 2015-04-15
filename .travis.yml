@@ -13,7 +13,7 @@ deploy:
   access_key_id: AKIAIIKFAWTCW3TC7OPA
   secret_access_key:
     secure: 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
-   region: us-east-1
+    region: us-east-1
   app: NCT-portal
   env: NCT-portal-dev
   bucket_name: elasticbeanstalk-us-east-1-099202218933
