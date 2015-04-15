@@ -16,3 +16,6 @@ deploy:
   bucket_name: elasticbeanstalk-us-east-1-099202218933
   on:
     python: 2.7
+notifications:
+  email:
+    - maksim_kozyarchuk@yahoo.com
