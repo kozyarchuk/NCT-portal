@@ -1,20 +1,18 @@
 language: python
 python:
-  - "2.7"
-  - "3.4"
-# command to install dependencies
+- '2.7'
+- '3.4'
 install:
-  - "pip install -r requirements.txt"
-# command to run tests
+- pip install -r requirements.txt
 script: nosetests
-
 deploy:
   provider: elasticbeanstalk
   access_key_id: AKIAIIKFAWTCW3TC7OPA
-  secret_access_key: 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
+  secret_access_key:
+    secure: srXZUD7uqR90zAdprwnnTKxHDNQU6iEJif9tMyccZe0yOVDbm/4EuoedoJ6vvaNuzK3IkYFRt6ivJ9w6d5jKFhGkPZ60N9UVRK6dM/jDTe/+55HHCJc3S9gRPFQ4g3I4skIcot175pcHIMj+MLMTWi0t/z8+XZjCVomQMsmxX8c=
   region: us-east-1
   app: NCT-portal
   env: NCT-portal-dev
   bucket_name: elasticbeanstalk-us-east-1-099202218933
   on:
-    python : 2.7
+    python: 2.7
