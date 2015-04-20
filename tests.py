@@ -8,4 +8,4 @@ class TestApplication(unittest.TestCase):
         c = app.test_client()
 
         rv = c.get('/')
-        assert "Hello" in rv.data
+        assert "Hello" in rv.data.decode("utf-8")
