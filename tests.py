@@ -8,7 +8,10 @@ class TestApplication(unittest.TestCase):
         c = app.test_client()
 
         rv = c.get('/')
-        assert "Hello" in rv.data.decode("utf-8")
+        assert "NCT PORTAL" in rv.data.decode("utf-8")
+
+        rv = c.get('/index.html')
+        assert "NCT PORTAL" in rv.data.decode("utf-8")
 
     def test_static_route(self):
         app.debug = True
