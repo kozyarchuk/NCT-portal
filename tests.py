@@ -14,6 +14,6 @@ class TestApplication(unittest.TestCase):
         app.debug = True
         c = app.test_client()
 
-        rv = c.get('static/portal.js')
+        rv = c.get('static/css/animate.css')
 
         self.assertEquals(200,  rv.status_code)

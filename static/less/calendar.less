@@ -1,0 +1,58 @@
+.full-calendar-wrapper  {
+    position: relative;
+    background-color: #fff;
+    overflow: hidden;
+    
+    .calendar-external-events   {
+        position: relative;
+        float: left;
+        width: 30%;
+        padding: 20px;
+        padding-bottom: 999px;
+        margin-bottom: -999px;
+      
+        @media (max-width: @screen-xs-max) {
+            float: none;
+            width: 100%;
+            padding-bottom: 20px;
+            margin-bottom: 0;
+        }
+        
+        .external-event {
+            padding: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            .border-radius(6px);
+            background-color: @primary-color;
+        }
+        
+        .add-new-event  {
+            float: right;
+            margin-top: 2px;
+            color: #fff;
+            .transition(color 0.2s ease);
+            
+            &:hover, &:focus    {
+                color: @primary-color;
+                .transition(color 0.2s ease);
+            }
+        }
+    }
+    
+    .full-calendar-body  {
+        float: left;
+        width: 70%;
+        padding: 20px;
+        
+        @media (max-width: @screen-xs-max) {
+            float: none;
+            width: 100%;
+        }
+    }
+}
+
+.fc-event  {    
+    color: #fff !important;
+    background: @primary-color !important;
+    border-color: @primary-color !important;
+}

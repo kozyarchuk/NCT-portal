@@ -1,0 +1,72 @@
+.wizard > .steps .current a, .wizard > .steps .current a:hover, .wizard > .steps .current a:active  {
+    background: @bg-success;
+}
+
+.wizard > .steps .done a, .wizard > .steps .done a:hover, .wizard > .steps .done a:active {
+    background: lighten(@bg-success,25%);   
+}
+
+.wizard > .actions a, .wizard > .actions a:hover, .wizard > .actions a:active {
+    background: @bg-success;   
+}
+
+.wizard > .steps .disabled a, .wizard > .steps .disabled a:hover, .wizard > .steps .disabled a:active {
+    //background: #f5f5f5;
+}
+
+.wizard { 
+    > .steps    {
+        > ul    {
+            > li    {
+                width: 25%;
+                
+                @media (max-width: 600px) {
+                    width: 50%;   
+                }
+                
+                @media (max-width: @screen-xs-max) {
+                    width: 100%;   
+                }
+            }
+        }
+    }
+    
+    > .content  {   
+        > .body {
+            width: 100%;   
+            
+            .parsley-errors-list    {
+                list-style: none !important;
+            }
+        }
+    }
+    
+    &.light-background  {
+        > .content   {
+             background: #f5f5f5;    
+        }
+    }
+}
+
+.wizard.vertical    {
+    > .steps {
+        display: inline;
+        float: left;
+        width: 30%;
+        
+        @media (max-width: 600px) {
+            float: none;
+            display: block;
+            width: 100%;
+        }
+    }
+    
+    > .content  {
+        @media (max-width: 600px) {
+            display: block;
+            width: auto;   
+            float: none;
+            margin: 0.5em;
+        }
+    }
+}

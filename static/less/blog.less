@@ -1,0 +1,105 @@
+.blog-wrapper   {
+    .blog-list  {
+        margin-bottom: 50px;
+        
+        .blog-date  {
+            float: left;
+            background: @primary-color;
+            color: #fff;
+            font-weight: 600;
+            width: 75px;
+            height: 75px;
+            border: 2px solid #fff;
+            padding-top: 10px;
+            font-size: 20px;
+            text-align: center;
+            .border-radius(50em);
+            box-shadow: 0 0 0 3px #ebebeb;       
+            
+            .blog-month {
+                margin-top: -2px;
+                font-size: 14px;
+            }   
+        }
+        
+        .blog-title {
+            margin-left: 90px;
+            font-size: 20px;
+            padding-top: 15px;
+        }
+    }
+}
+
+.popular-blog-post  {
+    list-style: none;
+    margin-top: 20px;
+    
+    li  {
+        display: block;
+        margin-bottom: 10px;
+        
+        &:last-child    {
+            margin-bottom: 0;
+        }
+        
+        .img-wrapper    {
+            float: left;
+            
+            img {
+                display: block;    
+                width: 70px;
+                height: 70px;
+            }
+        }
+        
+        .popular-blog-detail    {
+            margin-left: 85px;
+        }
+    }
+}
+
+.blog-sidebar-list {
+    list-style: none;
+    
+    li  {
+        
+        a   {
+            display: block;
+            padding: 5px;    
+            color: @primary-font-color;
+            
+            &:hover, &:focus    {
+                color: @primary-color;    
+            }
+        }
+    }
+}
+
+.blog-tag {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid rgba(0,0,0,.2);
+    background-color: #fff;
+    color: @primary-font-color;
+    text-shadow: 0 1px 3px rgba(0,0,0,.1);
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    .box-shadow(0 1px 3px rgba(0,0,0,.05));
+    margin: 2px;
+    .transition(all .2s ease);
+    
+    &:hover, &:focus    {
+        background-color: @primary-color;
+        color: #fff;
+    }
+}
+
+.blog-author    {
+    .author-profile-pic {
+        float: left;
+        width: 70px;
+        height: 70px;
+        margin-right: 20px;
+    }
+}

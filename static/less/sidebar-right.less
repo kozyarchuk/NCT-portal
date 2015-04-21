@@ -1,0 +1,107 @@
+.sidebar-right    {
+    position: absolute;
+    position: fixed;
+    top: 0;
+    left: auto;
+    right: -260px;
+    height: 100%;
+    z-index: 999999;
+    width: 260px;
+    overflow-x: none;
+    overflow-y: auto;
+    background: @right-sidebar-color;
+    color: @right-sidebar-font-color;
+    .transition(all 0.5s ease);
+   
+    &.active    {
+        display: block;
+        right: 0;
+        .transition(all 0.5s ease);
+    }
+    
+    .sidebar-header {
+        padding: 10px;
+        
+        input   {
+            float: left;
+            background: darken(@right-sidebar-color,3%);
+            border-color: darken(@right-sidebar-color,3%);
+            width: 210px;
+            
+            /*&:focus {
+                .box-shadow(none);
+                border: 1px solid @site-color4;
+            }*/
+        }
+        
+        .sidebar-setting   {
+            display: block;
+            margin-top: 7px; 
+            color: @right-sidebar-font-color;
+        }
+    }
+    
+    .title-block    {
+        background: darken(@right-sidebar-color,3%);   
+        color: lighten(@right-sidebar-font-color,3%);
+        padding: 5px 10px;
+        font-size: 11px;
+        text-transform: uppercase;   
+    }
+    
+    .content-block  {
+        padding: 10px;   
+        
+        .sidebar-list  {
+            list-style: none;
+            
+            li  {
+                margin-bottom: 10px;
+                
+                a   {
+                    display: block;
+                    padding: 5px 10px;
+                    color: @right-sidebar-font-color;
+                    .transition(all 0.4s ease);
+                    
+                    &:hover {
+                        background-color: darken(@right-sidebar-color,3%);   
+                        .transition(all 0.4s ease);
+                    }
+                    
+                    img     {
+                        width: 40px;    
+                        height: 40px;
+                        float: left;
+                    }
+                    
+                    .chat-detail  {
+                        float: left;
+                        
+                        .chat-name  {
+                            color: #fff;   
+                        }
+                        
+                        .chat-message   {
+                            width: 120px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                    }
+                    
+                    .chat-alert {
+                        float: right;
+                        line-height: 40px;
+                        margin-right: 10px;
+                    }
+                    
+                    .chat-status {
+                        float: right;
+                        line-height: 40px;
+                    }
+                }
+            }
+        }
+    }
+}

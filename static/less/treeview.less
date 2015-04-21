@@ -1,0 +1,107 @@
+.tree-view-menu-list    {
+    > ul  {
+        position: relative;
+        list-style: none;
+        
+        /*&:before    {
+            position: absolute;
+            content: '';
+            display: block;
+            width: 1px;
+            top: 28px;
+            bottom: 30px;
+            left: 15px;
+            background-color: #ddd;
+        }*/
+        
+        li  {
+            position: relative;
+            
+            a   {
+                display: block;
+                padding: 8px 10px;
+            }
+            
+            &.open  {
+                > a   {
+                    .folder-icon    {
+                        &:before    {
+                            content: "\f07c";    
+                        }
+                    }
+                }
+            }
+                    
+            .subtree    {
+                display: none;  
+                position: relative;
+                list-style: none;
+                padding-left: 20px;
+                
+                /*&:before    {
+                    position: absolute;
+                    content: '';
+                    display: block;
+                    width: 1px;
+                    top: 0px;
+                    bottom: 20px;    
+                    left: 15px;
+                    background-color: #ddd;
+                }*/
+                
+                li  {
+                    
+                    a   {
+                        position: relative;
+                        /*&:before    {
+                            position: absolute;
+                            content: '';
+                            display: block;
+                            width: 1px;
+                            top: 0;
+                            bottom: 0;    
+                            left: -5px;
+                            background-color: #ddd;
+                        }*/
+                        
+                        &.last-link {
+                             &:before    { 
+                                bottom: 20px;    
+                             }
+                        }
+                    }
+                    
+                    &:before    {
+                        position: absolute;
+                        content: '';
+                        display: block;
+                        height: 1px;
+                        width: 10px;
+                        top: 18px;
+                        left: -5px;
+                        background-color: #ddd;  
+                    }    
+                    
+                    &:after    {
+                        position: absolute;
+                        content: '';
+                        display: block;
+                        width: 1px;
+                        top: 0px;
+                        bottom: 0;    
+                        left: -5px;
+                        background-color: #ddd;
+                    }
+                    
+                    &.last-link {
+                        &:after    {
+                            top: 0px;
+                            height: 19px;
+                            bottom: auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,164 @@
+.timeline-wrapper    {
+    position: relative;
+    margin-left: 20px;
+    
+    &:before    {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 10px;
+        top: 0;
+        bottom: 0;
+        background-color: #e7eaef;
+        width: 2px;
+    }
+    
+    .timeline-row   {
+        position: relative;
+        padding-left: 30px;   
+        
+        &:before {
+            position: absolute;
+            top: 13px;
+            left: 44px;
+            display: inline-block;
+            border-top: 7px solid transparent;
+            border-right: 7px solid #ccc;
+            border-bottom: 7px solid transparent;
+            border-right-color: rgba(0, 0, 0, 0.1);
+            content: '';
+        }
+        
+        &:after {
+            position: absolute;
+            top: 14px;
+            left: 45px;
+            display: inline-block;
+            border-top: 6px solid transparent;
+            border-right: 6px solid #ffffff;
+            border-bottom: 6px solid transparent;
+            content: '';
+        }
+        
+        .timeline-item  {
+            position: relative;
+            width: 100%;
+            margin-bottom: 30px;
+            
+            .timeline-icon    {
+                content: '';
+                position: absolute;
+                display: block;
+                width: 40px;
+                height: 40px;
+                line-height: 38px;
+                text-align: center;
+                .border-radius(50em);
+                top: 0;
+                left: -39px;
+                font-size: 16px;
+                border: 2px solid @bg-danger;
+                color: @bg-danger;
+                background-color: #fff;
+                .box-shadow(0 0 3px rgba(0,0,0,0.15));
+            }
+            
+            .timeline-item-inner    {
+                padding-left: 20px;
+            }
+            
+            @media (max-width: @screen-xs-max) {
+                float: none;   
+                width: 100%;
+                margin-bottom: 30px;
+                
+                .timeline-item-inner    {
+                    padding-left: 0 !important;
+                    padding-right: 0 !important;
+                }
+            }
+            
+            .timeline-header    {
+                padding: 20px;   
+            }
+            
+            .timeline-body    {
+                background-color: #fff;
+                padding: 20px;   
+                border: 1px solid #eee;
+               
+                &.bg-primary    {
+                    background-color: @bg-primary;    
+                }
+                
+                &.bg-info    {
+                    background-color: @bg-info;    
+                }
+                
+                &.bg-warning    {
+                    background-color: @bg-warning;    
+                }
+                
+                &.bg-success    {
+                    background-color: @bg-success;    
+                }
+                
+                &.bg-danger    {
+                    background-color: @bg-danger;    
+                }
+               
+                .timeline-avatar    {
+                    width: @timeline-profile-pic-width;
+                    height: @timeline-profile-pic-height;
+                    float: left;
+                    padding: @timeline-profile-border-width;
+                    .border-radius(50em);
+                    margin-top: -10px;
+                    
+                    img {
+                        display: block;    
+                        width: @timeline-profile-pic-width - (@timeline-profile-border-width*2);
+                        height: @timeline-profile-pic-height - (@timeline-profile-border-width*2);
+                    }
+                    
+                    @media (max-width: @screen-xs) {
+                        float: none;
+                        margin-bottom: 20px;
+                    }
+                }
+                
+                .timeline-content   {
+                    margin-left: @timeline-profile-pic-width + 15;    
+                   
+                    @media (max-width: @screen-xs) {
+                        margin-left: 0;    
+                    }
+                }
+                
+                .seperate-bar   {
+                    margin-left: -20px;
+                    margin-right: -20px;
+                    padding: 10px;
+                    padding-left: @timeline-profile-pic-width + 35;    
+                    
+                    @media (max-width: @screen-xs) {
+                        padding-left: 20px;    
+                    }
+                }
+            }
+        }
+    }
+    
+    .timeline-year  {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        background-color: @bg-success;
+        color: #fff;
+        margin-bottom: 20px;
+        left: -13px;
+        text-align: center;
+        line-height: 50px;
+        .border-radius(50em);
+    }
+}

@@ -1,0 +1,29 @@
+.dropzone   { 
+    a.dz-remove, .dropzone-previews a.dz-remove {
+        background: @bg-danger;
+        background-image: none;
+        border-color: @bg-danger;
+        color: #fff;
+        .transition(all 0.3s ease);
+        
+        &:hover, &:focus, &:active, &.active {
+            color: #fff;
+            background: lighten(@bg-danger,7%);
+            .transition(all 0.3s ease);
+        }
+    }
+    
+    .dz-default.dz-message  {
+        background-image: none;
+        
+        span    {
+            display: block;
+            text-align: center;
+            font-size: 30px;
+        }   
+        
+        small   {
+            font-size: 21px;   
+        }
+    }
+}

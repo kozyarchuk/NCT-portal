@@ -1,0 +1,45 @@
+table   {
+    thead   {
+        th  {
+            &.text-center   {
+                text-align: center;   
+            }
+            
+            &.text-right   {
+                text-align: right;   
+            }
+        }
+        
+        tr  {
+            &.bg-blue   {    
+                th  {
+                    background-color: #3278b3;
+                    border-color: #3278b3;
+                    color: #fff;
+                    border-top: 1px solid #3278b3 !important;
+                }
+            }
+        }
+    }
+    
+    tbody  {
+        td  {
+            &.text-center   {
+                text-align: center;   
+            }
+            
+            &.text-right   {
+                text-align: right;   
+            }
+        }
+    }
+}
+
+.table>caption+thead>tr:first-child>
+, .table>colgroup+thead>tr:first-child>th
+, .table>thead:first-child>tr:first-child>th
+, .table>caption+thead>tr:first-child>td
+, .table>colgroup+thead>tr:first-child>td
+, .table>thead:first-child>tr:first-child>td    {
+    
+}

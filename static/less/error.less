@@ -1,0 +1,29 @@
+.error-wrapper    {    
+    .error-inner    {
+        width: 400px;
+        margin: 50px auto;
+        text-align: center;
+        
+        @media (max-width: @screen-xs) {
+            width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-top: 30px;
+        }
+     
+        .error-type {
+            position: relative;
+            font-size: 15em;
+            visibility: hidden;
+            
+             @media (max-width: @screen-xs) {
+                 font-size: 10em;
+             }
+            
+            &.animated   {
+                visibility: visible;
+                .animation(fadeInDown 1s ease);
+            }
+        }
+    }
+}

@@ -1,0 +1,132 @@
+.input-group-btn    {
+    >.btn {
+        .box-shadow(none);
+    }
+}
+
+.btn    {
+    .transition(background-color 0.3s ease);
+    //.box-shadow(0px 2px 1px 1px rgba(0, 0, 0, .15));
+    
+    &.btn-transparent   {
+        background: transparent;       
+        border: none;
+    }
+    
+    &.btn-rounded   {
+        .border-radius(50em);
+        padding-left: 15px;
+        padding-right: 15px;
+        
+        &.btn-icon-rounded {
+            padding-left: 12px;
+            padding-right: 12px;  
+            
+            &.btn-sm    {
+                padding-left: 10px;
+                padding-right: 10px;  
+            }
+        }
+    }
+    
+    &.application-btn {
+        padding: 5px 20px;
+        font-size: 40px;
+        .border-radius(6px);
+            
+        span    {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+        }
+    }
+    
+    &:hover, &:focus {
+        outline: none;
+        .transition(background-color 0.3s ease);
+    }
+    
+    &.btn-primary   {
+        background: @bg-primary;
+        border: 1px solid darken(@bg-primary,5%);
+        
+        &:hover, &:focus, &:active, &.active {
+            background: lighten(@bg-primary,7%);
+            .transition(all 0.3s ease);
+        }
+    }
+    &.btn-info   {
+        background: @bg-info;
+        border: 1px solid darken(@bg-info,5%);
+       
+        &:hover, &:focus, &:active, &.active {
+            background: lighten(@bg-info,7%);
+            .transition(all 0.3s ease);
+        }
+    }
+    &.btn-success   {
+        background: @bg-success;
+        border: 1px solid darken(@bg-success,5%);
+       
+        &:hover, &:focus, &:active, &.active {
+            background: lighten(@bg-success,7%);
+            .transition(all 0.3s ease);
+        }
+    }
+    &.btn-warning   {
+        background: @bg-warning;
+        border: 1px solid darken(@bg-warning,5%);
+        
+        &:hover, &:focus, &:active, &.active {
+            background: lighten(@bg-warning,7%);
+            .transition(all 0.3s ease);
+        }
+    }
+    &.btn-danger   {
+        background: @bg-danger;
+        border: 1px solid darken(@bg-danger,5%);
+        
+        &:hover, &:focus, &:active, &.active {
+            background: lighten(@bg-danger,7%);
+            .transition(all 0.3s ease);
+        }
+    }
+    &.btn-purple   {
+        background: @bg-purple;
+        color: #fff;
+        border: 1px solid darken(@bg-purple,5%);
+        
+        &:hover, &:focus, &:active, &.active {
+            background: lighten(@bg-purple,7%);
+            .transition(all 0.3s ease);
+        }
+    }
+}
+
+.open .dropdown-toggle  {
+    &.btn-primary {
+        background: darken(@bg-primary,5%);
+        border-color: darken(@bg-primary,7%);
+    }
+    
+    &.btn-info {
+        background: darken(@bg-info,5%);
+        border-color: darken(@bg-info,7%);
+    }
+    
+    &.btn-success {
+        background: darken(@bg-success,5%);
+        border-color: darken(@bg-success,7%);
+    }
+    
+    &.btn-warning {
+        background: darken(@bg-warning,5%);
+        border-color: darken(@bg-warning,7%);
+    }
+    
+    &.btn-danger {
+        background: darken(@bg-danger,5%);
+        border-color: darken(@bg-danger,7%);
+    }
+}
+
