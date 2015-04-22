@@ -4,7 +4,7 @@ $(function	()	{
 	var d1 = [];
 	for (var i = 0; i <= 10; i += 1) {
 		//d1.push([i, parseInt(Math.random() * 30)]);
-		d1 = [[0,700],[1,1200],[2,1100],[3,900],[4,500],[5,700],[6,500],[7,600],[8,1200],[9,1700],[10,1200]];
+		d1 = [[-5,-2.2],[-4,-15.2],[-3,-23.0],[-2,-16.2],[-1,-8.4],[0,0],[1,7.3],[2,16.6],[3,31],[4,43],[5,48]];
 	}
 
 	function plotWithOptions() {
@@ -66,20 +66,20 @@ $(function	()	{
 	var totalVisitChart = Morris.Bar({
 	  element: 'totalSalesChart',
 	  data: [
-	    { y: '2008', a: 100, b: 90 },
-	    { y: '2009', a: 75,  b: 65 },
-	    { y: '2010', a: 50,  b: 40 },
-	    { y: '2011', a: 75,  b: 65 },
-	    { y: '2012', a: 50,  b: 40 },
-	    { y: '2013', a: 75,  b: 65 },
-	    { y: '2014', a: 100, b: 90 }
+	    { y: '1 week', a: -1034500, b: 453000, c: 13500 },
+	    { y: '2 weeks', a: 706700,  b: 350000, c: 0 },
+        { y: '3 weeks', a: -989000,  b: -69000, c: 33000 },
+	    { y: '1 month', a: 1450000,  b: 680000, c: 36000 },
+	    { y: '2 month', a: 860000,  b: 350000, c: 120000 },
+	    { y: '3 month', a: 650000,  b: 250000, c: 64000 },
+
 	  ],
 	  xkey: 'y',
-	  ykeys: ['a', 'b'],
-	  labels: ['Total Visits', 'Bounce Rate'],
-	  barColors: ['#999', '#eee'],
+	  ykeys: ['a', 'b','c'],
+	  labels: ['USD', 'EUR', 'Other(USD Equivalent)'],
+	  barColors: ['#999', '#eee', '#bbb'],
 	  grid: false,
-	  gridTextColor: '#777',
+	  gridTextColor: '#666',
 	});
 	
 
