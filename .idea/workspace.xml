@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fb8d38e5-9107-47c0-b62a-4a879dbd339e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/simplify/simplify_dashboard.js" afterPath="$PROJECT_DIR$/static/js/simplify/simplify_dashboard.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests.py" afterPath="$PROJECT_DIR$/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="NCT-portal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,8 +41,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="5.6985292" vertical-offset="0" max-vertical-offset="7020">
-              <caret line="225" column="54" selection-start-line="225" selection-start-column="54" selection-end-line="225" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.68766403" vertical-offset="3008" max-vertical-offset="7020">
+              <caret line="314" column="60" selection-start-line="314" selection-start-column="60" selection-end-line="314" selection-end-column="60" />
               <folding>
                 <element signature="n#div#1;n#div#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -685,8 +682,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.6985292" vertical-offset="0" max-vertical-offset="7020">
-          <caret line="225" column="54" selection-start-line="225" selection-start-column="54" selection-end-line="225" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.68766403" vertical-offset="3008" max-vertical-offset="7020">
+          <caret line="314" column="60" selection-start-line="314" selection-start-column="60" selection-end-line="314" selection-end-column="60" />
           <folding>
             <element signature="n#div#1;n#div#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
