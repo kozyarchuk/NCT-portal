@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>File List</title>
+</head>
+<body>
+{% macro render_field(field) %}
+  <dt>{{ field.label }}
+  <dd>{{ field }}
+  {% if field.errors %}
+    <ul class=errors>
+    {% for error in field.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </dd>
+{% endmacro %}
+
+ <h1>Upload File</h1>
+ <form action="" method="post" name="validate">
+    {{ form.hidden_tag() }}
+    {{ render_field(form.file_name) }}
+    <p><input type="submit" value="Upload"></p>
+ </form>
+
+</body>
+</html>
+
+
+
