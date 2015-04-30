@@ -11,3 +11,4 @@ WTForms==2.0.1
 #distribute==0.6.24
 #itsdangerous==0.24
 #wsgiref==0.1.2
+boto>=2.38.0
