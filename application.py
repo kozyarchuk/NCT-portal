@@ -7,7 +7,8 @@ from wtforms.validators import DataRequired
 import boto.sqs
 from boto.sqs.message import Message
 import boto
-import  random
+import random
+import os
 
 application = flask.Flask(__name__)
 application.secret_key = 'Secret'
@@ -66,8 +67,15 @@ def files():
 
             return "Message Sent"
     except:
+        ret = ""
+
         import  traceback
-        return  traceback.format_exc()
+        ret += traceback.format_exc()
+        ret += "*"*100
+        ret += "\n"
+        ret += os.environ.get('AWS_ACCESS_KEY_ID', "not set")
+
+        return  ret
 
 if __name__ == '__main__':
     application.debug=True
