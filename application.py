@@ -42,28 +42,32 @@ def index():
 
 @application.route('/files.html', methods=['GET', 'POST'])
 def files():
-    if request.method == 'GET':
-        bucket = conn.s3.get_bucket(BUCKET)
-        files = []
-        for key in bucket.list():
-            files.append("{name}\t{size}\t{modified}".format(
-                name = key.name, size = key.size,
-                modified = key.last_modified ))
+    try:
+        if request.method == 'GET':
+            bucket = conn.s3.get_bucket(BUCKET)
+            s3_files = []
+            for key in bucket.list():
+                s3_files.append("{name}\t{size}\t{modified}".format(
+                    name = key.name, size = key.size,
+                    modified = key.last_modified ))
 
-        form = FilesForm()
-        return render_template('files.html', form=form, files = files)
-    else:
-        # q = conn.sqs.get_queue('NCT-service-request')
-        # m = Message()
-        # m.set_body('The file is on its way.')
-        # q.write(m)
+            form = FilesForm()
+            return render_template('files.html', form=form, files = s3_files)
+        else:
+            # q = conn.sqs.get_queue('NCT-service-request')
+            # m = Message()
+            # m.set_body('The file is on its way.')
+            # q.write(m)
 
-        bucket = conn.s3.get_bucket(BUCKET)
-        key = bucket.new_key('File%s'% random.random())
-        key.set_contents_from_string('Hello World!')
+            bucket = conn.s3.get_bucket(BUCKET)
+            key = bucket.new_key('File%s'% random.random())
+            key.set_contents_from_string('Hello World!')
 
 
-        return "Message Sent"
+            return "Message Sent"
+    except:
+        import  traceback
+        return  traceback.format_exception()
 
 if __name__ == '__main__':
     application.debug=True
