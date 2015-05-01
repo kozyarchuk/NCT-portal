@@ -67,7 +67,7 @@ def files():
             return "Message Sent"
     except:
         import  traceback
-        return  traceback.format_exception()
+        return  traceback.format_exc()
 
 if __name__ == '__main__':
     application.debug=True

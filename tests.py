@@ -24,6 +24,7 @@ class TestApplication(unittest.TestCase):
     # def test_files_route(self):
     #
     #     rv = self.c.get('/files.html')
+    #     print (rv.data)
     #     assert "Upload File" in rv.data.decode("utf-8")
 
     # def test_files_route(self):
