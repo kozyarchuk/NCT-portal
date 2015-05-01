@@ -9,10 +9,26 @@ from boto.sqs.message import Message
 import boto
 import random
 import os
+import dateutil.parser
 
 application = flask.Flask(__name__)
 application.secret_key = 'Secret'
 BUCKET = 'nct-data'
+
+
+class FileRecord:
+    def __init__(self, key):
+        self.name = key.name.decode("utf-8")
+        self.size = key.size
+        self.upload_time = key.last_modified
+
+    def __cmp__(self, other):
+        return cmp(self.upload_time, other.upload_time)
+
+    @property
+    def formatted_upload_time(self):
+        d = dateutil.parser.parse(self.upload_time)
+        return d.strftime("%B %d, %Y %I:%M%p")
 
 class Conn:
     _s3 = None
@@ -22,61 +38,56 @@ class Conn:
     def s3(self):
         if not self._s3:
             self._s3 = boto.connect_s3()
-        return  self._s3
+        return self._s3
 
     @property
     def sqs(self):
         if not self._sqs:
             self._sqs = boto.sqs.connect_to_region("us-east-1")
-        return  self._sqs
+        return self._sqs
+
 
 conn = Conn()
+
 
 class FilesForm(Form):
     file_name = StringField('file_name', validators=[DataRequired()])
 
+
+@application.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+
 @application.route('/')
 @application.route('/index.html')
 def index():
-    return render_template('index.html' )
+    return render_template('index.html')
+
+
+@application.route('/analyze.html')
+@application.route('/secmaster.html')
+def under_construction():
+    return render_template('under_construction.html')
 
 
 @application.route('/files.html', methods=['GET', 'POST'])
 def files():
-    try:
-        if request.method == 'GET':
-            bucket = conn.s3.get_bucket(BUCKET)
-            s3_files = []
-            for key in bucket.list():
-                s3_files.append("{name}\t{size}\t{modified}".format(
-                    name = key.name, size = key.size,
-                    modified = key.last_modified ))
+    if request.method == 'GET':
+        bucket = conn.s3.get_bucket(BUCKET)
 
-            form = FilesForm()
-            return render_template('files.html', form=form, files = s3_files)
-        else:
-            # q = conn.sqs.get_queue('NCT-service-request')
-            # m = Message()
-            # m.set_body('The file is on its way.')
-            # q.write(m)
+        s3_files = [ FileRecord(key) for key in bucket.list() ]
 
-            bucket = conn.s3.get_bucket(BUCKET)
-            key = bucket.new_key('File%s'% random.random())
-            key.set_contents_from_string('Hello World!')
+        form = FilesForm()
+        return render_template('files.html', form=form, files=sorted(s3_files, reverse=True))
+    else:
+        bucket = conn.s3.get_bucket(BUCKET)
+        key = bucket.new_key('File%s' % random.random())
+        key.set_contents_from_string('Hello World!')
 
+        return "Message Sent"
 
-            return "Message Sent"
-    except:
-        ret = ""
-
-        import  traceback
-        ret += traceback.format_exc()
-        ret += "*"*100
-        ret += "\n"
-        ret += os.environ.get('AWS_ACCESS_KEY_ID', "not set")
-
-        return  ret
 
 if __name__ == '__main__':
-    application.debug=True
+    application.debug = True
     application.run(host='0.0.0.0')

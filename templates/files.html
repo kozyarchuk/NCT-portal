@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>File List</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+
+
+
 {% macro render_field(field) %}
   <dt>{{ field.label }}
   <dd>{{ field }}
@@ -25,15 +23,34 @@
     <p><input type="submit" value="Upload"></p>
  </form>
 
-<table>
-    <tr><td> Files in the bucket</td></tr>
+ <h1>Trade Files</h1>
+
+<table class="table table-striped" id="dataTable">
+    <thead>
+        <tr>
+            <th>File Name</th>
+            <th>Size</th>
+            <th>Uploaded On</th>
+        </tr>
+    </thead>
+    <tbody>
     {%- for file in files %}
-      <tr> <td>{{ file}} </td> </tr>
-{%- endfor %}
+      <tr>
+          <td>{{ file.name}} </td>
+          <td>{{ file.size}} </td>
+          <td>{{ file.formatted_upload_time}} </td>
+      </tr>
+    {%- endfor %}
+    </tbody>
 </table>
 
-</body>
-</html>
+<script>
+    $(function()	{
+        $('#dataTable').dataTable();
+    });
+</script>
+
+{% endblock %}
 
 
 

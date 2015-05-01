@@ -1,713 +1,358 @@
-<!DOCTYPE html>
-<html lang="en">
-  	<head>
-	    <meta charset="utf-8">
-	    <title>NCT Portal</title>
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <meta name="description" content="">
-	    <meta name="author" content="">
+{% extends "base.html" %}
+{% block content %}
 
-	    <!-- Bootstrap core CSS -->
-	    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		
-		<!-- Font Awesome -->
-		<link href="/static/css/font-awesome.min.css" rel="stylesheet">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="page-title">
+                Dashboard
+            </div>
+            <div class="page-sub-header">
+                Welcome Back, User 1
+            </div>
+        </div>
+        <div class="col-sm-6 text-right text-left-sm p-top-sm">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                All Funds <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu pull-right" role="menu">
+                <li><a href="#">All Funds</a></li>
+                <li><a href="#">Relative Value</a></li>
+                <li><a href="#">John's Ideas</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Fund 1</a></li>
+                <li><a href="#">Fund 2</a></li>
+              </ul>
+            </div>
 
-		<!-- ionicons -->
-		<link href="/static/css/ionicons.min.css" rel="stylesheet">
-		
-		<!-- Morris -->
-		<link href="/static/css/morris.css" rel="stylesheet"/>
+            <a class="btn btn-default"><i class="fa fa-cog"></i></a>
+        </div>
+    </div>
 
-		<!-- Datepicker -->
-		<link href="/static/css/datepicker.css" rel="stylesheet"/>
+    <div class="row m-top-md">
+        <div class="col-lg-3 col-sm-6">
+            <div class="statistic-box bg-info m-bottom-md">
+                <div class="statistic-title">
+                    New Trades
+                </div>
 
-		<!-- Animate -->
-		<link href="/static/css/animate.min.css" rel="stylesheet">
+                <div class="statistic-value">
+                    1,240
+                </div>
 
-		<!-- Owl Carousel -->
-		<link href="/static/css/owl.carousel.min.css" rel="stylesheet">
-		<link href="/static/css/owl.theme.default.min.css" rel="stylesheet">
+                <div class="m-top-md">11% Higher than average </div>
 
-		<!-- Simplify -->
-		<link href="/static/css/simplify.min.css" rel="stylesheet">
-	
-  	</head>
+                <div class="statistic-icon-background">
+                    <i class="ion-speedometer"></i>
+                </div>
+            </div>
+        </div>
 
-  	<body class="overflow-hidden">
-		<div class="wrapper preload">
-			<header class="top-nav">
-				<div class="top-nav-inner">
-					<div class="nav-header">
-						<a href="index.html" class="brand">
-							<i class="fa fa-database"></i><span class="brand-name">NCT PORTAL</span>
-						</a>
-					</div>
-					<div class="nav-container">
-						<button type="button" class="navbar-toggle pull-left sidebar-toggle" id="sidebarToggleLG">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<ul class="nav-notification">	
-							<li class="search-list">
-								<div class="search-input-wrapper">
-									<div class="search-input">
-										<input type="text" class="form-control input-sm inline-block">
-										<a href="#" class="input-icon text-normal"><i class="ion-ios7-search-strong"></i></a>
-									</div>
-								</div>
-							</li>
-						</ul>
-						<div class="pull-right m-right-sm">
-							<div class="user-block hidden-xs">
-								<a href="#" id="userToggle" data-toggle="dropdown">
-									<div class="user-detail inline-block">
-										User 1
-										<i class="fa fa-angle-down"></i>
-									</div>
-								</a>
-								<div class="panel border dropdown-menu user-panel">
-									<div class="panel-body paddingTB-sm">
-										<ul>
-											<li>
-												<a href="profile.html">
-													<i class="fa fa-edit fa-lg"></i><span class="m-left-xs">My Profile</span>
-												</a>
-											</li>
-											<li>
-												<a href="signin.html">
-													<i class="fa fa-power-off fa-lg"></i><span class="m-left-xs">Sign out</span>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<ul class="nav-notification">
-								<li>
-									<a href="#" data-toggle="dropdown"><i class="fa fa-bell fa-lg"></i></a>
-									<span class="badge badge-info bounceIn animation-delay6 active">2</span>
-									<ul class="dropdown-menu notification dropdown-3 pull-right">
-										<li><a href="#">You have 2 new notifications</a></li>
-										<li>
-											<a href="#">
-												<span class="notification-icon bg-warning">
-													<i class="fa fa-warning"></i>
-												</span>
-												<span class="m-left-xs">Fund 1 exceeded VaR limit.</span>
-												<span class="time text-muted">Just now</span>
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<span class="notification-icon bg-success">
-													<i class="fa fa-plus"></i>
-												</span>
-												<span class="m-left-xs">Price tollerance alert</span>
-												<span class="time text-muted">1 day ago</span>
-											</a>
-										</li>
-										<li><a href="#">View all notifications</a></li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div><!-- ./top-nav-inner -->	
-			</header>
-			<aside class="sidebar-menu fixed">
-				<div class="sidebar-inner scrollable-sidebar">
-					<div class="main-menu">
-						<ul class="accordion">
-							<li class="menu-header">
-								Main Menu
-							</li>
-							<li class="bg-palette1 active">
-								<a href="index.html">
-									<span class="menu-content block">
-										<span class="menu-icon"><i class="block fa fa-home fa-lg"></i></span>
-										<span class="text m-left-sm">Dashboard</span>
-									</span>
-									<span class="menu-content-hover block">
-										Home
-									</span>
-								</a>
-							</li>
-							<li class="openable bg-palette3">
-								<a href="#">
-									<span class="menu-content block">
-										<span class="menu-icon"><i class="block fa fa-list fa-lg"></i></span>
-										<span class="text m-left-sm">Files</span>
-										<span class="submenu-icon"></span>
-									</span>
-									<span class="menu-content-hover block">
-										Files
-									</span>
-								</a>
-								<ul class="submenu bg-palette4">
-									<li><a href="files.html">
-                                        <small class="badge badge-success badge-square bounceIn animation-delay2 m-left-xs pull-right">2</small>
-                                        <span class="submenu-label">Trade Files</span></a>
-                                    </li>
-									<li><a href="files.html"><span class="submenu-label">Reports</span></a></li>
-									<li><a href="files.html"><span class="submenu-label">Position Files</span></a></li>
-									<li><a href="files.html"><span class="submenu-label">Price Files</span></a></li>
-								</ul>
-							</li>
-							<li class="openable bg-palette4">
-								<a href="#">
-									<span class="menu-content block">
-										<span class="menu-icon"><i class="block fa fa-bank fa-lg"></i></span>
-										<span class="text m-left-sm">Analyze</span>
-										<span class="submenu-icon"></span>
-									</span>
-									<span class="menu-content-hover block">
-										Analyze
-									</span>
-								</a>
-								<ul class="submenu">
-									<li><a href="analyze.html"><span class="submenu-label">Positions</span></a></li>
-									<li><a href="analyze.html"><span class="submenu-label">Trades</span></a></li>
-								</ul>
-							</li>
+        <div class="col-lg-3 col-sm-6">
+            <div class="statistic-box bg-info m-bottom-md">
+                <div class="statistic-title">
+                    Open Positions
+                </div>
 
- 							<li class="openable bg-palette4">
-								<a href="#">
-									<span class="menu-content block">
-										<span class="menu-icon"><i class="block fa fa-book fa-lg"></i></span>
-										<span class="text m-left-sm">Security Master</span>
-										<span class="submenu-icon"></span>
-									</span>
-									<span class="menu-content-hover block">
-										Security Master
-									</span>
-								</a>
-								<ul class="submenu">
-									<li><a href="secmaster.html"><span class="submenu-label">Corporate Actions</span></a></li>
-									<li><a href="secmaster.html"><span class="submenu-label">Cashflow Maintenance</span></a></li>
-									<li><a href="secmaster.html"><span class="submenu-label">Security Maintenance</span></a></li>
-								</ul>
-							</li>
+                <div class="statistic-value">
+                    581
+                </div>
 
- 							<li class="openable bg-palette4">
-								<a href="#">
-									<span class="menu-content block">
-										<span class="menu-icon"><i class="block fa fa-briefcase fa-lg"></i></span>
-										<span class="text m-left-sm">Configure</span>
-										<span class="submenu-icon"></span>
-									</span>
-									<span class="menu-content-hover block">
-										Analyze
-									</span>
-								</a>
-								<ul class="submenu">
-									<li><a href="configure.html"><span class="submenu-label">Allocations</span></a></li>
-									<li><a href="configure.html"><span class="submenu-label">Commissions</span></a></li>
-									<li><a href="configure.html"><span class="submenu-label">Portfolios</span></a></li>
-									<li><a href="configure.html"><span class="submenu-label">Pricing Rules</span></a></li>
-								</ul>
-							</li>
+                <div class="m-top-md">8% Higher than last month</div>
 
- 							<li class="openable bg-palette4">
-								<a href="#">
-									<span class="menu-content block">
-										<span class="menu-icon"><i class="block fa ion-clipboard fa-lg"></i></span>
-										<span class="text m-left-sm">Daily Tasks</span>
-										<span class="submenu-icon"></span>
-									</span>
-									<span class="menu-content-hover block">
-										Daily Tasks
-									</span>
-								</a>
-								<ul class="submenu">
-									<li><a href="tasks.html"><span class="submenu-label">Scheduled Jobs</span></a></li>
-									<li><a href="tasks.html"><span class="submenu-label">Processing Errors</span></a></li>
-									<li><a href="tasks.html"><span class="submenu-label">Daily Tasks</span></a></li>
-								</ul>
-							</li>
+                <div class="statistic-icon-background">
+                    <i class="ion-ios7-calculator-outline"></i>
+                </div>
+            </div>
+        </div>
 
-						</ul>
-					</div>	
-				</div><!-- sidebar-inner -->
-			</aside>
-			
-			<div class="main-container">
-				<div class="padding-md">
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="page-title">
-								Dashboard
-							</div>
-							<div class="page-sub-header">
-								Welcome Back, User 1
-							</div>
-						</div>
-						<div class="col-sm-6 text-right text-left-sm p-top-sm">
-							<div class="btn-group">
-							  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							    All Funds <span class="caret"></span>
-							  </button>
-							  <ul class="dropdown-menu pull-right" role="menu">
-							    <li><a href="#">All Funds</a></li>
-							    <li><a href="#">Relative Value</a></li>
-							    <li><a href="#">John's Ideas</a></li>
-							    <li class="divider"></li>
-							    <li><a href="#">Fund 1</a></li>
-							    <li><a href="#">Fund 2</a></li>
-							  </ul>
-							</div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="statistic-box bg-danger m-bottom-md">
+                <div class="statistic-title">
+                    Daily P&L
+                </div>
 
-							<a class="btn btn-default"><i class="fa fa-cog"></i></a>
-						</div>
-					</div>
+                <div class="statistic-value">
+                    $-10.04K
+                </div>
 
-					<div class="row m-top-md">
-						<div class="col-lg-3 col-sm-6">
-							<div class="statistic-box bg-info m-bottom-md">
-								<div class="statistic-title">
-									New Trades
-								</div>
+                <div class="m-top-md">3% of Daily VaR</div>
 
-								<div class="statistic-value">
-									1,240
-								</div>
+                <div class="statistic-icon-background">
+                    <i class="ion-stats-bars"></i>
+                </div>
+            </div>
+        </div>
 
-								<div class="m-top-md">11% Higher than average </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="statistic-box bg-success m-bottom-md">
+                <div class="statistic-title">
+                    Year to Date P&L
+                </div>
 
-								<div class="statistic-icon-background">
-									<i class="ion-speedometer"></i>
-								</div>
-							</div>
-						</div>
+                <div class="statistic-value">
+                    $134.45m
+                </div>
 
-						<div class="col-lg-3 col-sm-6">
-							<div class="statistic-box bg-info m-bottom-md">
-								<div class="statistic-title">
-									Open Positions
-								</div>
+                <div class="m-top-md">8.5% Year to Date RoR</div>
 
-								<div class="statistic-value">
-									581
-								</div>
+                <div class="statistic-icon-background">
+                    <i class="ion-stats-bars"></i>
+                </div>
+            </div>
+        </div>
+    </div>
 
-								<div class="m-top-md">8% Higher than last month</div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="smart-widget widget-dark-blue">
+                <div class="smart-widget-header">
+                    Projected Cashflows
+                    <span class="smart-widget-option">
+                        <span class="refresh-icon-animated">
+                            <i class="fa fa-circle-o-notch fa-spin"></i>
+                        </span>
+                        <a href="#" class="widget-toggle-hidden-option">
+                            <i class="fa fa-cog"></i>
+                        </a>
+                        <a href="#" class="widget-collapse-option" data-toggle="collapse">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a href="#" class="widget-refresh-option">
+                            <i class="fa fa-refresh"></i>
+                        </a>
+                        <a href="#" class="widget-remove-option">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </span>
+                </div>
+                <div class="smart-widget-inner">
+                    <div class="smart-widget-hidden-section">
+                        <ul class="widget-color-list clearfix">
+                            <li style="background-color:#20232b;" data-color="widget-dark"></li>
+                            <li style="background-color:#4c5f70;" data-color="widget-dark-blue"></li>
+                            <li style="background-color:#23b7e5;" data-color="widget-blue"></li>
+                            <li style="background-color:#2baab1;" data-color="widget-green"></li>
+                            <li style="background-color:#edbc6c;" data-color="widget-yellow"></li>
+                            <li style="background-color:#fbc852;" data-color="widget-orange"></li>
+                            <li style="background-color:#e36159;" data-color="widget-red"></li>
+                            <li style="background-color:#7266ba;" data-color="widget-purple"></li>
+                            <li style="background-color:#f5f5f5;" data-color="widget-light-grey"></li>
+                            <li style="background-color:#fff;" data-color="reset"></li>
+                        </ul>
+                    </div>
+                    <div class="smart-widget-body no-padding">
+                        <div class="padding-md">
+                            <div id="totalSalesChart" class="morris-chart" style="height:250px;"></div>
+                        </div>
 
-								<div class="statistic-icon-background">
-									<i class="ion-ios7-calculator-outline"></i>
-								</div>
-							</div>
-						</div>
+                        <div class="bg-grey">
+                            <div class="row">
+                                <div class="col-xs-4 text-center">
+                                    <h3 class="m-top-sm">43.2m</h3>
+                                    <small class="m-bottom-sm block">USD Balance</small>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <h3 class="m-top-sm">3.5m</h3>
+                                    <small class="m-bottom-sm block">EUR Balance</small>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <h3 class="m-top-sm">349.5m</h3>
+                                    <small class="m-bottom-sm block">Posted Collateral</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- ./smart-widget-inner -->
+            </div><!-- ./smart-widget -->
+        </div><!-- ./col -->
+        <div class="col-lg-6">
+            <div class="smart-widget widget-dark-blue">
+                <div class="smart-widget-header">
+                    Sensitivity to S&P 500
+                    <span class="smart-widget-option">
+                        <span class="refresh-icon-animated">
+                            <i class="fa fa-circle-o-notch fa-spin"></i>
+                        </span>
+                        <a href="#" class="widget-toggle-hidden-option">
+                            <i class="fa fa-cog"></i>
+                        </a>
+                        <a href="#" class="widget-collapse-option" data-toggle="collapse">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a href="#" class="widget-refresh-option">
+                            <i class="fa fa-refresh"></i>
+                        </a>
+                        <a href="#" class="widget-remove-option">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </span>
+                </div>
+                <div class="smart-widget-inner">
+                    <div class="smart-widget-hidden-section">
+                        <ul class="widget-color-list clearfix">
+                            <li style="background-color:#20232b;" data-color="widget-dark"></li>
+                            <li style="background-color:#4c5f70;" data-color="widget-dark-blue"></li>
+                            <li style="background-color:#23b7e5;" data-color="widget-blue"></li>
+                            <li style="background-color:#2baab1;" data-color="widget-green"></li>
+                            <li style="background-color:#edbc6c;" data-color="widget-yellow"></li>
+                            <li style="background-color:#fbc852;" data-color="widget-orange"></li>
+                            <li style="background-color:#e36159;" data-color="widget-red"></li>
+                            <li style="background-color:#7266ba;" data-color="widget-purple"></li>
+                            <li style="background-color:#f5f5f5;" data-color="widget-light-grey"></li>
+                            <li style="background-color:#fff;" data-color="reset"></li>
+                        </ul>
+                    </div>
+                    <div class="smart-widget-body no-padding">
+                        <div class="padding-md">
+                            <div id="placeholder" style="height:250px;"></div>
+                        </div>
 
-						<div class="col-lg-3 col-sm-6">
-							<div class="statistic-box bg-danger m-bottom-md">
-								<div class="statistic-title">
-									Daily P&L
-								</div>
+                    </div>
+                </div><!-- ./smart-widget-inner -->
+            </div><!-- ./smart-widget -->
+        </div><!-- ./col -->
+    </div>
 
-								<div class="statistic-value">
-									$-10.04K
-								</div>
+    <div class="row">
+        <div class="col-lg-8">
 
-								<div class="m-top-md">3% of Daily VaR</div>
+            <div class="smart-widget">
+                <div class="smart-widget-header">
+                    Daily Scorecard
+                    <span class="smart-widget-option">
+                        <span class="refresh-icon-animated">
+                            <i class="fa fa-circle-o-notch fa-spin"></i>
+                        </span>
+                        <a href="#" class="widget-toggle-hidden-option">
+                            <i class="fa fa-cog"></i>
+                        </a>
+                        <a href="#" class="widget-collapse-option" data-toggle="collapse">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a href="#" class="widget-refresh-option">
+                            <i class="fa fa-refresh"></i>
+                        </a>
+                        <a href="#" class="widget-remove-option">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </span>
+                </div>
+                <div class="smart-widget-inner table-responsive">
+                    <div class="smart-widget-hidden-section">
+                        <ul class="widget-color-list clearfix">
+                            <li style="background-color:#20232b;" data-color="widget-dark"></li>
+                            <li style="background-color:#4c5f70;" data-color="widget-dark-blue"></li>
+                            <li style="background-color:#23b7e5;" data-color="widget-blue"></li>
+                            <li style="background-color:#2baab1;" data-color="widget-green"></li>
+                            <li style="background-color:#edbc6c;" data-color="widget-yellow"></li>
+                            <li style="background-color:#fbc852;" data-color="widget-orange"></li>
+                            <li style="background-color:#e36159;" data-color="widget-red"></li>
+                            <li style="background-color:#7266ba;" data-color="widget-purple"></li>
+                            <li style="background-color:#f5f5f5;" data-color="widget-light-grey"></li>
+                            <li style="background-color:#fff;" data-color="reset"></li>
+                        </ul>
+                    </div>
+                    <table class="table table-striped no-margin">
+                        <thead>
+                            <tr>
+                                <th class="text-right">Daily Task</th>
+                                <th class="text-right">Owner</th>
+                                <th class="text-right">Progress</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-right">Trade Processing</td>
+                                <td class="text-right">Middle Office</td>
+                                <td class="text-right">
+                                    <div class="progress progress-sm inline-block m-bottom-none" style="width:100px; margin-top:6px">
+                                      <div class="progress-bar progress-bar-success" style="width: 100%;">
+                                        <span class="sr-only">100% Complete</span>
+                                      </div>
+                                    </div>
 
-								<div class="statistic-icon-background">
-									<i class="ion-stats-bars"></i>
-								</div>
-							</div>
-						</div>
+                                    <span class="m-left-sm vertical-top">100%</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Mark to Market</td>
+                                <td class="text-right">Middle Office</td>
+                                <td class="text-right">
+                                    <div class="progress progress-sm inline-block m-bottom-none" style="width:100px; margin-top:6px">
+                                      <div class="progress-bar progress-bar-success" style="width: 100%;">
+                                        <span class="sr-only">100% Complete</span>
+                                      </div>
+                                    </div>
 
-						<div class="col-lg-3 col-sm-6">
-							<div class="statistic-box bg-success m-bottom-md">
-								<div class="statistic-title">
-									Year to Date P&L
-								</div>
+                                    <span class="m-left-sm vertical-top">100%</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Trade Exports</td>
+                                <td class="text-right">Middle Office</td>
+                                <td class="text-right">
+                                    <div class="progress progress-sm inline-block m-bottom-none" style="width:100px; margin-top:6px">
+                                      <div class="progress-bar progress-bar-warning" style="width: 75%;">
+                                        <span class="sr-only">75% Complete</span>
+                                      </div>
+                                    </div>
 
-								<div class="statistic-value">
-									$134.45m
-								</div>
+                                    <span class="m-left-sm vertical-top">75%</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Reports</td>
+                                <td class="text-right">Middle Office</td>
+                                <td class="text-right">
+                                    <div class="progress progress-sm inline-block m-bottom-none" style="width:100px; margin-top:6px">
+                                      <div class="progress-bar progress-bar-danger" style="width: 15%;">
+                                        <span class="sr-only">15% Complete</span>
+                                      </div>
+                                    </div>
 
-								<div class="m-top-md">8.5% Year to Date RoR</div>
+                                    <span class="m-left-sm vertical-top">15%</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- ./smart-widget-inner -->
+            </div><!-- ./smart-widget -->
+        </div><!-- ./col -->
 
-								<div class="statistic-icon-background">
-									<i class="ion-stats-bars"></i>
-								</div>
-							</div>
-						</div>
-					</div>
+        <div class="col-lg-4">
 
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="smart-widget widget-dark-blue">
-								<div class="smart-widget-header">
-									Projected Cashflows
-									<span class="smart-widget-option">
-										<span class="refresh-icon-animated">
-											<i class="fa fa-circle-o-notch fa-spin"></i>
-										</span>
-			                            <a href="#" class="widget-toggle-hidden-option">
-			                                <i class="fa fa-cog"></i>
-			                            </a>
-			                            <a href="#" class="widget-collapse-option" data-toggle="collapse">
-			                                <i class="fa fa-chevron-up"></i>
-			                            </a>
-			                            <a href="#" class="widget-refresh-option">
-			                                <i class="fa fa-refresh"></i>
-			                            </a>
-			                            <a href="#" class="widget-remove-option">
-			                                <i class="fa fa-times"></i>
-			                            </a>
-			                        </span>
-								</div>
-								<div class="smart-widget-inner">
-									<div class="smart-widget-hidden-section">
-										<ul class="widget-color-list clearfix">
-											<li style="background-color:#20232b;" data-color="widget-dark"></li>
-											<li style="background-color:#4c5f70;" data-color="widget-dark-blue"></li>
-											<li style="background-color:#23b7e5;" data-color="widget-blue"></li>
-											<li style="background-color:#2baab1;" data-color="widget-green"></li>
-											<li style="background-color:#edbc6c;" data-color="widget-yellow"></li>
-											<li style="background-color:#fbc852;" data-color="widget-orange"></li>
-											<li style="background-color:#e36159;" data-color="widget-red"></li>
-											<li style="background-color:#7266ba;" data-color="widget-purple"></li>
-											<li style="background-color:#f5f5f5;" data-color="widget-light-grey"></li>
-											<li style="background-color:#fff;" data-color="reset"></li>
-										</ul>
-									</div>
-									<div class="smart-widget-body no-padding">
-										<div class="padding-md">
-											<div id="totalSalesChart" class="morris-chart" style="height:250px;"></div>
-										</div>
-										
-										<div class="bg-grey">
-											<div class="row">
-												<div class="col-xs-4 text-center">
-													<h3 class="m-top-sm">43.2m</h3>
-													<small class="m-bottom-sm block">USD Balance</small>
-												</div>
-												<div class="col-xs-4 text-center">
-													<h3 class="m-top-sm">3.5m</h3>
-													<small class="m-bottom-sm block">EUR Balance</small>
-												</div>
-												<div class="col-xs-4 text-center">
-													<h3 class="m-top-sm">349.5m</h3>
-													<small class="m-bottom-sm block">Posted Collateral</small>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div><!-- ./smart-widget-inner -->
-							</div><!-- ./smart-widget -->
-						</div><!-- ./col -->
-						<div class="col-lg-6">
-							<div class="smart-widget widget-dark-blue">
-								<div class="smart-widget-header">
-									Sensitivity to S&P 500
-									<span class="smart-widget-option">
-										<span class="refresh-icon-animated">
-											<i class="fa fa-circle-o-notch fa-spin"></i>
-										</span>
-			                            <a href="#" class="widget-toggle-hidden-option">
-			                                <i class="fa fa-cog"></i>
-			                            </a>
-			                            <a href="#" class="widget-collapse-option" data-toggle="collapse">
-			                                <i class="fa fa-chevron-up"></i>
-			                            </a>
-			                            <a href="#" class="widget-refresh-option">
-			                                <i class="fa fa-refresh"></i>
-			                            </a>
-			                            <a href="#" class="widget-remove-option">
-			                                <i class="fa fa-times"></i>
-			                            </a>
-			                        </span>
-								</div>
-								<div class="smart-widget-inner">
-									<div class="smart-widget-hidden-section">
-										<ul class="widget-color-list clearfix">
-											<li style="background-color:#20232b;" data-color="widget-dark"></li>
-											<li style="background-color:#4c5f70;" data-color="widget-dark-blue"></li>
-											<li style="background-color:#23b7e5;" data-color="widget-blue"></li>
-											<li style="background-color:#2baab1;" data-color="widget-green"></li>
-											<li style="background-color:#edbc6c;" data-color="widget-yellow"></li>
-											<li style="background-color:#fbc852;" data-color="widget-orange"></li>
-											<li style="background-color:#e36159;" data-color="widget-red"></li>
-											<li style="background-color:#7266ba;" data-color="widget-purple"></li>
-											<li style="background-color:#f5f5f5;" data-color="widget-light-grey"></li>
-											<li style="background-color:#fff;" data-color="reset"></li>
-										</ul>
-									</div>
-									<div class="smart-widget-body no-padding">
-										<div class="padding-md">
-											<div id="placeholder" style="height:250px;"></div>
-										</div>
+            <div class="task-widget">
+                <div class="task-widget-body clearfix">
+                    <div class="pie-chart-wrapper">
+                        <div class="chart task-pie-chart line-normal" data-percent="73">
+                            <h1 class="m-top-lg m-bottom-none">73</h1>
+                            <div>Percent</div>
+                        </div>
+                    </div>
+                    <div class="widget-detail">
+                        <small class="text-upper text-muted block font-sm">Task Completed</small>
+                        <h1 class="no-margin">146</h1>
+                    </div>
+                </div><!-- ./task-widget-body -->
+                <div class="task-widget-statatistic">
+                    <ul class="clearfix">
+                        <li class="bg-grey border-success">
+                            <div class="text-muted text-upper font-sm">Remaining</div>
+                            44
+                        </li>
+                        <li class="bg-grey border-danger">
+                            <div class="text-muted text-upper font-sm">In Progress</div>
+                            12
+                        </li>
+                        <li class="bg-grey border-purple">
+                            <div class="text-muted text-upper font-sm">Total</div>
+                            202
+                        </li>
+                    </ul><!-- ./row -->
+                </div>
+            </div><!-- ./task-widget -->
+        </div><!-- ./col -->
+    </div><!-- ./row -->
 
-									</div>
-								</div><!-- ./smart-widget-inner -->
-							</div><!-- ./smart-widget -->
-						</div><!-- ./col -->
-					</div>
-
-					<div class="row">
-						<div class="col-lg-8">
-
-							<div class="smart-widget">
-								<div class="smart-widget-header">
-									Daily Scorecard
-									<span class="smart-widget-option">
-										<span class="refresh-icon-animated">
-											<i class="fa fa-circle-o-notch fa-spin"></i>
-										</span>
-			                            <a href="#" class="widget-toggle-hidden-option">
-			                                <i class="fa fa-cog"></i>
-			                            </a>
-			                            <a href="#" class="widget-collapse-option" data-toggle="collapse">
-			                                <i class="fa fa-chevron-up"></i>
-			                            </a>
-			                            <a href="#" class="widget-refresh-option">
-			                                <i class="fa fa-refresh"></i>
-			                            </a>
-			                            <a href="#" class="widget-remove-option">
-			                                <i class="fa fa-times"></i>
-			                            </a>
-			                        </span>
-								</div>
-								<div class="smart-widget-inner table-responsive">
-									<div class="smart-widget-hidden-section">
-										<ul class="widget-color-list clearfix">
-											<li style="background-color:#20232b;" data-color="widget-dark"></li>
-											<li style="background-color:#4c5f70;" data-color="widget-dark-blue"></li>
-											<li style="background-color:#23b7e5;" data-color="widget-blue"></li>
-											<li style="background-color:#2baab1;" data-color="widget-green"></li>
-											<li style="background-color:#edbc6c;" data-color="widget-yellow"></li>
-											<li style="background-color:#fbc852;" data-color="widget-orange"></li>
-											<li style="background-color:#e36159;" data-color="widget-red"></li>
-											<li style="background-color:#7266ba;" data-color="widget-purple"></li>
-											<li style="background-color:#f5f5f5;" data-color="widget-light-grey"></li>
-											<li style="background-color:#fff;" data-color="reset"></li>
-										</ul>
-									</div>
-									<table class="table table-striped no-margin">
-										<thead>
-											<tr>
-												<th class="text-right">Daily Task</th>
-												<th class="text-right">Owner</th>
-												<th class="text-right">Progress</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td class="text-right">Trade Processing</td>
-												<td class="text-right">Middle Office</td>
-												<td class="text-right">
-													<div class="progress progress-sm inline-block m-bottom-none" style="width:100px; margin-top:6px">
-													  <div class="progress-bar progress-bar-success" style="width: 100%;">
-													    <span class="sr-only">100% Complete</span>
-													  </div>
-													</div>
-
-													<span class="m-left-sm vertical-top">100%</span>
-												</td>
-											</tr>
-											<tr>
-												<td class="text-right">Mark to Market</td>
-												<td class="text-right">Middle Office</td>
-												<td class="text-right">
-													<div class="progress progress-sm inline-block m-bottom-none" style="width:100px; margin-top:6px">
-													  <div class="progress-bar progress-bar-success" style="width: 100%;">
-													    <span class="sr-only">100% Complete</span>
-													  </div>
-													</div>
-
-													<span class="m-left-sm vertical-top">100%</span>
-												</td>
-											</tr>
-											<tr>
-												<td class="text-right">Trade Exports</td>
-												<td class="text-right">Middle Office</td>
-												<td class="text-right">
-													<div class="progress progress-sm inline-block m-bottom-none" style="width:100px; margin-top:6px">
-													  <div class="progress-bar progress-bar-warning" style="width: 75%;">
-													    <span class="sr-only">75% Complete</span>
-													  </div>
-													</div>
-
-													<span class="m-left-sm vertical-top">75%</span>
-												</td>
-											</tr>
-											<tr>
-												<td class="text-right">Reports</td>
-												<td class="text-right">Middle Office</td>
-												<td class="text-right">
-													<div class="progress progress-sm inline-block m-bottom-none" style="width:100px; margin-top:6px">
-													  <div class="progress-bar progress-bar-danger" style="width: 15%;">
-													    <span class="sr-only">15% Complete</span>
-													  </div>
-													</div>
-
-													<span class="m-left-sm vertical-top">15%</span>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div><!-- ./smart-widget-inner -->
-							</div><!-- ./smart-widget -->
-						</div><!-- ./col -->
-
-                        <div class="col-lg-4">
-
-							<div class="task-widget">
-								<div class="task-widget-body clearfix">
-									<div class="pie-chart-wrapper">
-										<div class="chart task-pie-chart line-normal" data-percent="73">
-											<h1 class="m-top-lg m-bottom-none">73</h1>
-											<div>Percent</div>
-										</div>
-									</div>
-									<div class="widget-detail">
-										<small class="text-upper text-muted block font-sm">Task Completed</small>
-										<h1 class="no-margin">146</h1>
-									</div>
-								</div><!-- ./task-widget-body -->
-								<div class="task-widget-statatistic">
-									<ul class="clearfix">
-										<li class="bg-grey border-success">
-											<div class="text-muted text-upper font-sm">Remaining</div>
-											44
-										</li>
-										<li class="bg-grey border-danger">
-											<div class="text-muted text-upper font-sm">In Progress</div>
-											12
-										</li>
-										<li class="bg-grey border-purple">
-											<div class="text-muted text-upper font-sm">Total</div>
-											202
-										</li>
-									</ul><!-- ./row -->
-								</div>
-							</div><!-- ./task-widget -->
-						</div><!-- ./col -->
-					</div><!-- ./row -->
-
-				</div><!-- ./padding-md -->
-			</div><!-- /main-container -->
-
-			<footer class="footer">
-				<span class="footer-brand">
-					<strong class="text-danger">NCT</strong> Portal
-				</span>
-				<p class="no-margin">
-					&copy; 2015 <strong>NCT Portal</strong>. ALL Rights Reserved.
-				</p>	
-			</footer>
-		</div><!-- /wrapper -->
-
-		<a href="#" class="scroll-to-top hidden-print"><i class="fa fa-chevron-up fa-lg"></i></a>
-
-		<!-- Delete Widget Confirmation -->
-		<div class="custom-popup delete-widget-popup delete-confirmation-popup" id="deleteWidgetConfirm">
-			<div class="popup-header text-center">
-				<span class="fa-stack fa-4x">
-				  <i class="fa fa-circle fa-stack-2x"></i>
-				  <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
-				</span>
-			</div>
-			<div class="popup-body text-center">
-				<h5>Are you sure to delete this widget?</h5>
-				<strong class="block m-top-xs"><i class="fa fa-exclamation-circle m-right-xs text-danger"></i>This action cannot be undone</strong>
-			
-				<div class="text-center m-top-lg">
-					<a class="btn btn-success m-right-sm remove-widget-btn">Delete</a>
-					<a class="btn btn-default deleteWidgetConfirm_close">Cancel</a>
-				</div>
-			</div>
-		</div>
-
-		
-	    <!-- Le javascript
-	    ================================================== -->
-	    <!-- Placed at the end of the document so the pages load faster -->
-		
-		<!-- Jquery -->
-		<script src="/static/js/jquery-1.11.1.min.js"></script>
-		
-		<!-- Bootstrap -->
-	    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
-	  
-		<!-- Flot -->
-		<script src='/static/js/jquery.flot.min.js'></script>
-
-		<!-- Slimscroll -->
-		<script src='/static/js/jquery.slimscroll.min.js'></script>
-		
-		<!-- Morris -->
-		<script src='/static/js/rapheal.min.js'></script>
-		<script src='/static/js/morris.min.js'></script>
-
-		<!-- Datepicker -->
-		<script src='/static/js/uncompressed/datepicker.js'></script>
-
-		<!-- Sparkline -->
-		<script src='/static/js/sparkline.min.js'></script>
-
-		<!-- Skycons -->
-		<script src='/static/js/uncompressed/skycons.js'></script>
-		
-		<!-- Popup Overlay -->
-		<script src='/static/js/jquery.popupoverlay.min.js'></script>
-
-		<!-- Easy Pie Chart -->
-		<script src='/static/js/jquery.easypiechart.min.js'></script>
-
-		<!-- Sortable -->
-		<script src='/static/js/uncompressed/jquery.sortable.js'></script>
-
-		<!-- Owl Carousel -->
-		<script src='/static/js/owl.carousel.min.js'></script>
-
-		<!-- Modernizr -->
-		<script src='/static/js/modernizr.min.js'></script>
-		
-		<!-- Simplify -->
-		<script src="/static/js/simplify/simplify.js"></script>
-		<script src="/static/js/simplify/simplify_dashboard.js"></script>
-
-
-		<script>
-			$(function()	{
-				$('.chart').easyPieChart({
-					easing: 'easeOutBounce',
-					size: '140',
-					lineWidth: '9',
-					barColor: '#7266ba',
-					onStep: function(from, to, percent) {
-						$(this.el).find('.percent').text(Math.round(percent));
-					}
-				});
-
-				$('.sortable-list').sortable();
-
-				$('.todo-checkbox').click(function()	{
-					
-					var _activeCheckbox = $(this).find('input[type="checkbox"]');
-
-					if(_activeCheckbox.is(':checked'))	{
-						$(this).parent().addClass('selected');					
-					}
-					else	{
-						$(this).parent().removeClass('selected');
-					}
-				
-				});
-
-				//Delete Widget Confirmation
-				$('#deleteWidgetConfirm').popup({
-					vertical: 'top',
-					pagecontainer: '.container',
-					transition: 'all 0.3s'
-				});
-			});
-			
-		</script>
-	
-  	</body>
-</html>
+{% endblock %}
