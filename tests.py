@@ -21,10 +21,10 @@ class TestApplication(unittest.TestCase):
 
         self.assertEquals(200,  rv.status_code)
 
-    def test_files_route(self):
-
-        rv = self.c.get('/files.html')
-        assert "Upload File" in rv.data.decode("utf-8")
+    # def test_files_route(self):
+    #
+    #     rv = self.c.get('/files.html')
+    #     assert "Upload File" in rv.data.decode("utf-8")
 
     # def test_files_route(self):
     #

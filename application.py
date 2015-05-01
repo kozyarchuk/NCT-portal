@@ -6,17 +6,30 @@ from wtforms import StringField
 from wtforms.validators import DataRequired
 import boto.sqs
 from boto.sqs.message import Message
+import boto
+import  random
 
 application = flask.Flask(__name__)
 application.secret_key = 'Secret'
+BUCKET = 'nct-data'
 
-_boto_conn = None
-def get_boto_conn():
-    global _boto_conn
-    if not _boto_conn:
-        _boto_conn = boto.sqs.connect_to_region("us-east-1")
+class Conn:
+    _s3 = None
+    _sqs = None
 
-    return  _boto_conn
+    @property
+    def s3(self):
+        if not self._s3:
+            self._s3 = boto.connect_s3()
+        return  self._s3
+
+    @property
+    def sqs(self):
+        if not self._sqs:
+            self._sqs = boto.sqs.connect_to_region("us-east-1")
+        return  self._sqs
+
+conn = Conn()
 
 class FilesForm(Form):
     file_name = StringField('file_name', validators=[DataRequired()])
@@ -30,14 +43,26 @@ def index():
 @application.route('/files.html', methods=['GET', 'POST'])
 def files():
     if request.method == 'GET':
+        bucket = conn.s3.get_bucket(BUCKET)
+        files = []
+        for key in bucket.list():
+            files.append("{name}\t{size}\t{modified}".format(
+                name = key.name, size = key.size,
+                modified = key.last_modified ))
+
         form = FilesForm()
-        return render_template('files.html', form=form)
+        return render_template('files.html', form=form, files = files)
     else:
-        conn = get_boto_conn()
-        q = conn.get_queue('NCT-service-request')
-        m = Message()
-        m.set_body('The file is on its way.')
-        q.write(m)
+        # q = conn.sqs.get_queue('NCT-service-request')
+        # m = Message()
+        # m.set_body('The file is on its way.')
+        # q.write(m)
+
+        bucket = conn.s3.get_bucket(BUCKET)
+        key = bucket.new_key('File%s'% random.random())
+        key.set_contents_from_string('Hello World!')
+
+
         return "Message Sent"
 
 if __name__ == '__main__':
