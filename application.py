@@ -1,20 +1,19 @@
 import flask
-from flask.templating import render_template
-from flask import Flask, render_template, jsonify, request
-from flask.ext.wtf import Form
-from wtforms import StringField
-from wtforms.validators import DataRequired
-import boto.sqs
+from flask import render_template, request, flash, redirect, url_for
 from boto.sqs.message import Message
 import boto
-import random
+import time
 import os
 import dateutil.parser
+from werkzeug import secure_filename
+
 
 application = flask.Flask(__name__)
 application.secret_key = 'Secret'
-BUCKET = 'nct-data'
+application.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024
 
+BUCKET = 'nct-data'
+ALLOWED_EXTENSIONS = set(['.txt', '.csv', '.xls', '.xlsx','.dat'])
 
 class FileRecord:
     def __init__(self, key):
@@ -50,14 +49,9 @@ class Conn:
 conn = Conn()
 
 
-class FilesForm(Form):
-    file_name = StringField('file_name', validators=[DataRequired()])
-
-
 @application.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
-
 
 @application.route('/')
 @application.route('/index.html')
@@ -73,20 +67,26 @@ def under_construction():
 
 @application.route('/files.html', methods=['GET', 'POST'])
 def files():
-    if request.method == 'GET':
-        bucket = conn.s3.get_bucket(BUCKET)
-
-        s3_files = [ FileRecord(key) for key in bucket.list() ]
-
-        form = FilesForm()
-        return render_template('files.html', form=form, files=sorted(s3_files, reverse=True))
+    if request.method == 'POST':
+        trade_file = request.files['trade_file']
+        if trade_file :
+            bucket = conn.s3.get_bucket(BUCKET)
+            base_name, extension = os.path.splitext( secure_filename( trade_file.filename ) )
+            if extension in ALLOWED_EXTENSIONS:
+                file_name = "%s.%s.%s" % (base_name, time.time(),extension)
+                key = bucket.new_key(file_name)
+                key.set_contents_from_string(trade_file.stream.read())
+                flash("File Saved",'info')
+            else:
+                flash("Unsupported extension %s. Only %s are supported" % (extension, ALLOWED_EXTENSIONS),'error')
+        else:
+            flash("File is missing",'error')
+        return redirect('/files.html')
     else:
         bucket = conn.s3.get_bucket(BUCKET)
-        key = bucket.new_key('File%s' % random.random())
-        key.set_contents_from_string('Hello World!')
-
-        return "Message Sent"
-
+        ordered_list = sorted(bucket.list(), key=lambda k: k.last_modified)
+        s3_files = [ FileRecord(key) for key in ordered_list[0:20] ]
+        return render_template('files.html', files=sorted(s3_files, reverse=True))
 
 if __name__ == '__main__':
     application.debug = True

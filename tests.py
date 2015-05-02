@@ -1,5 +1,6 @@
 import unittest
 from application import application as app
+import  os
 
 class TestApplication(unittest.TestCase):
 
@@ -20,6 +21,7 @@ class TestApplication(unittest.TestCase):
         rv = self.c.get('static/css/animate.css')
 
         self.assertEquals(200,  rv.status_code)
+
 
     # def test_files_route(self):
     #

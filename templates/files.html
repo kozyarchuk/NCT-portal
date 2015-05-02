@@ -1,27 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
 
+<form action="" method=post enctype=multipart/form-data>
+      <p><input type=file name="trade_file">
+         <input type=submit value=Upload>
+</form>
+{% with info = get_flashed_messages(category_filter=["info"]) %}
+{% if info %}
+    <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    {%- for msg in info %}
+        <i class="fa fa-check-circle m-right-xs"></i><strong>Success!</strong> {{msg}}
+    {% endfor -%}
+</div>
+{% endif %}
+{% endwith %}
 
-
-{% macro render_field(field) %}
-  <dt>{{ field.label }}
-  <dd>{{ field }}
-  {% if field.errors %}
-    <ul class=errors>
-    {% for error in field.errors %}
-      <li>{{ error }}</li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-  </dd>
-{% endmacro %}
-
- <h1>Upload File</h1>
- <form action="" method="post" name="validate">
-    {{ form.hidden_tag() }}
-    {{ render_field(form.file_name) }}
-    <p><input type="submit" value="Upload"></p>
- </form>
+{% with error = get_flashed_messages(category_filter=["error"]) %}
+{% if error %}
+    <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    {%- for msg in error %}
+        <i class="fa fa-check-circle m-right-xs"></i><strong>Error</strong> {{msg}}<br>
+    {% endfor -%}
+</div>
+{% endif %}
+{% endwith %}
 
  <h1>Trade Files</h1>
 
