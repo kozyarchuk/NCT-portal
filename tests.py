@@ -1,10 +1,16 @@
 import unittest
 from application import application as app
-import  os
-
+from gateway import s3
+from testlib import test_s3
+from cStringIO import StringIO
+import os
 class TestApplication(unittest.TestCase):
 
     def setUp(self):
+        os.environ['SECRET_KEY'] = 'xxx'
+        self.s3 = test_s3.S3()
+        s3.gw = self.s3
+
         app.debug = True
         self.c = app.test_client()
 
@@ -22,14 +28,13 @@ class TestApplication(unittest.TestCase):
 
         self.assertEquals(200,  rv.status_code)
 
+    def test_files_route(self):
 
-    # def test_files_route(self):
-    #
-    #     rv = self.c.get('/files.html')
-    #     print (rv.data)
-    #     assert "Upload File" in rv.data.decode("utf-8")
+        rv = self.c.get('/files.html')
+        assert "Trade Files" in rv.data.decode("utf-8")
 
-    # def test_files_route(self):
-    #
-    #     rv = self.c.post('/files.html')
-    #     assert "Message Sent" in rv.data.decode("utf-8")
+    def test_files_route(self):
+
+        rv = self.c.post('/files.html',
+                         data=dict(trade_file=(StringIO('fake file'), 'file.csv')) )
+        assert "files.html" in rv.data.decode("utf-8")
