@@ -1,13 +1,17 @@
+import os
+os.environ['SECRET_KEY'] = 'xxx'
 import unittest
 from application import application as app
 from gateway import s3
 from testlib import test_s3
-from cStringIO import StringIO
-import os
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO
+    
 class TestApplication(unittest.TestCase):
 
     def setUp(self):
-        os.environ['SECRET_KEY'] = 'xxx'
         self.s3 = test_s3.S3()
         s3.gw = self.s3
 

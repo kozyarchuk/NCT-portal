@@ -1,13 +1,15 @@
+import os
+os.environ['SECRET_KEY'] = 'xxx'
+
 import unittest
 from domain.file_record import FileRecord
 from testlib.test_s3 import BucketRecord, Bucket
-from cStringIO import StringIO
-import os
-
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO
+    
 class TestFileRecord(unittest.TestCase):
-
-    def setUp(self):
-        os.environ['SECRET_KEY'] = 'xxx'
 
     def test_file_record_display(self):
         br = BucketRecord(1)
