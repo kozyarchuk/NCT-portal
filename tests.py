@@ -8,7 +8,7 @@ try:
     from StringIO import StringIO
 except ImportError:
     from io import StringIO
-    
+
 class TestApplication(unittest.TestCase):
 
     def setUp(self):
@@ -40,5 +40,5 @@ class TestApplication(unittest.TestCase):
     def test_files_route(self):
 
         rv = self.c.post('/files.html',
-                         data=dict(trade_file=(StringIO('fake file'), 'file.csv')) )
+                         data=dict(trade_file=(StringIO(), 'file.csv')) )
         assert "files.html" in rv.data.decode("utf-8")

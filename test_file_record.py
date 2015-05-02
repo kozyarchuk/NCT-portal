@@ -8,7 +8,7 @@ try:
     from StringIO import StringIO
 except ImportError:
     from io import StringIO
-    
+
 class TestFileRecord(unittest.TestCase):
 
     def test_file_record_display(self):
@@ -34,13 +34,15 @@ class TestFileRecord(unittest.TestCase):
         class FileMsg:
             filename = 'xxxx.doc'
         msg, err = FileRecord.upload_file(Bucket(1),FileMsg())
-        self.assertEquals("Unsupported extension .doc. Only set(['.xls', '.csv', '.xlsx', '.txt', '.dat']) are supported", msg)
+        self.assertTrue("Unsupported extension .doc" in msg)
         self.assertEquals("error", err)
 
     def test_upload_file_loads_file_to_bucket(self):
         class FileMsg:
             filename = 'xxxx.csv'
-            stream = StringIO('file content')
+            stream = StringIO()
+        FileMsg.stream.write('file content')
+        FileMsg.stream.seek(0)
         bucket = Bucket(1)
         msg, err = FileRecord.upload_file(bucket,FileMsg())
         self.assertEquals("File Saved", msg)

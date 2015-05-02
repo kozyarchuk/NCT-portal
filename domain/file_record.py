@@ -7,7 +7,7 @@ class FileRecord:
     ALLOWED_EXTENSIONS = set(['.txt', '.csv', '.xls', '.xlsx','.dat'])
 
     def __init__(self, key):
-        self.name = key.name.decode("utf-8")
+        self.name = key.name
         self.size = key.size
         self.upload_time = key.last_modified
 
