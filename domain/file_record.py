@@ -14,6 +14,9 @@ class FileRecord:
     def __cmp__(self, other):
         return cmp(self.upload_time, other.upload_time)
 
+    def __lt__(self, other):
+        return self.upload_time < other.upload_time
+
     @property
     def formatted_upload_time(self):
         d = dateutil.parser.parse(self.upload_time)
