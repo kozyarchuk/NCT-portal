@@ -34,6 +34,7 @@ class FileRecord:
             if extension in cls.ALLOWED_EXTENSIONS:
                 file_name = "%s.%s.%s" % (base_name, time.time(), extension)
                 key = bucket.new_key(file_name)
+                key.set_metadata('user_upload', True)
                 key.set_contents_from_string(trade_file.stream.read())
                 return ("File Saved", 'info')
             else:

@@ -10,12 +10,15 @@ class BucketRecord:
 class Key:
     def __init__(self, name):
         self.name = name
-        self.data = NameError
+        self.data = None
+        self.metadata = {}
 
     def set_contents_from_string(self, data):
         self.data = data
 
-
+    def set_metadata(self, name, value):
+        self.metadata[name] = value
+        
 class Bucket:
     def __init__(self, size):
         self.size = size
