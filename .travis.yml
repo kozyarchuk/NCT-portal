@@ -5,17 +5,6 @@ python:
 install:
 - pip install -r requirements.txt
 script: nosetests
-deploy:
-  provider: elasticbeanstalk
-  access_key_id: AKIAJ4N4ARHGLW4KN7HQ
-  secret_access_key:
-    secure: mVB5336Q+9fQ1IY8fVBiP4EX6SuC1gOiRRSkh5eA/3KQVVuguzwL4pBiXZESyUJVqYxlATG2Xrpk3Cl1bRgLFZS14xXyPNAMvoQ5sJ6EaHOEbuFibPeouLEJokVrLYaACYruybCbBPbtgj49n0ZTBqiLOah3WX8MxwtURXpJ8Fc=
-  region: us-east-1
-  app: NCT-portal
-  env: NCT-portal-dev
-  bucket_name: elasticbeanstalk-us-east-1-099202218933
-  on:
-    python: 2.7
 notifications:
   email:
     - maksim_kozyarchuk@yahoo.com
